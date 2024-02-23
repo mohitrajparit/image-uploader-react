@@ -1,13 +1,17 @@
-import { useState } from 'react'
-
-
+import React from 'react'
+import GetImage from './components/GetImage'
+import UploadImage from './components/UploadImage'
 function App() {
   
   return (
     <>
-      <div><h1 className='bg-black text-[white]'>Hello World</h1></div>
-    </>
-  )
+      <div>
+        <p className='m-auto p-2 my-2 text-right'>Hello User...</p>
+        
+      </div>
+      <GetImage/>
+      <UploadImage/>
+       </>  )
 }
 
 export default App
