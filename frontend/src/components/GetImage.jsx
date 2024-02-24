@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { AiOutlineDelete } from 'react-icons/ai';
+import Spinner from './Spinner';
 const GetImage = () => {
   const [images,setImages]=useState({});
   const [img,setImg]=useState(false);
@@ -10,18 +12,9 @@ const GetImage = () => {
     axios.get("https://image-uploader-react.onrender.com/api")
     .then(res => {
       const imagess = res.data;
-      // console.log("hello");
-      // console.log(imagess);
       setImages(res.data);
     })
   }
-  // const fetchImg2=()=>{
-  //   axios.get("").then(res=>{
-  //     const imgrender=res.data;
-  //     console.log(imgrender);
-  //   })
-  // }
-  // useEffect(fetchImg2,[]);
   useEffect(fetchImage,[]);
   const handleClick=()=>{
     setImg(!img);
@@ -47,6 +40,7 @@ const GetImage = () => {
     }
   }
   return (
+    
     <div className="text-center">
   <div>
     <h1 className="text-2.5rem font-bold inline-block border-b-4 border-pink-600 text-[#3E3C3C] m-2 mb-0 p-2 pb-0">
@@ -59,10 +53,11 @@ const GetImage = () => {
     onClick={handleClick}
     className="bg-[#F18D9E] m-2 p-2 rounded-full text-[#3E3C3C]"
   >
+    
     {!img ? 'Fetch Images' : 'Unfetch image'}
   </button>
-
-  <div className="flex flex-wrap justify-center gap-4 relative">
+  
+    <div className="flex flex-wrap justify-center gap-4 relative">
     {img &&
       images.data.map((image) => (
         <div key={image._id} className="mb-4 relative">
@@ -71,12 +66,14 @@ const GetImage = () => {
             alt="image"
             className="max-w-[300px] h-auto rounded"
           />
-          <div className="absolute top-0 right-0 m-2 border border-black text-[#F18D9E] text-xl p-0.5 cursor-pointer" onClick={()=>handleDelete(image._id)}>
-            X
+          <div className="absolute top-0 right-0 m-2  text-[#F18D9E] text-xl p-0.5 cursor-pointer" onClick={()=>handleDelete(image._id)}>
+            <AiOutlineDelete/>
           </div>
         </div>
       ))}
   </div>
+  
+  
   <ToastContainer position='top-center'/>
 </div>
 
