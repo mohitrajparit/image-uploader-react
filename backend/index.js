@@ -13,6 +13,9 @@ app.use(express.json({limit:'10mb'}))
 app.use(cors());
 const port=process.env.PORT||5001;
 
+app.get('/',async(req,res){
+    res.send("<h1>Server for Image Upload</h1>")
+})
 app.use('/api',getRoutes);
 const storage=multer.diskStorage({
     destination:function(req,file,cb){

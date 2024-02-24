@@ -28,7 +28,6 @@ const GetImage = () => {
       setImg(false);
       if (response.status === 200) {
         toast.success('Item deleted successfully');
-        // setImages(response.data)
         window.location.reload(false);
         
       } else {
