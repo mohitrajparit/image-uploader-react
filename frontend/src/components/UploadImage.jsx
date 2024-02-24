@@ -14,7 +14,7 @@ const UploadImage = () => {
           const formData = new FormData();
           formData.append('image', img);
     
-            const response = await axios.post('http://localhost:5001/api/upload', formData, {
+            const response = await axios.post(`https://image-uploader-react.onrender.com/api/upload`, formData, {
               headers: {
                 'Content-Type': 'multipart/form-data',
               },

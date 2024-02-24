@@ -7,19 +7,28 @@ const GetImage = () => {
   const [images,setImages]=useState({});
   const [img,setImg]=useState(false);
   const fetchImage=()=>{
-    axios.get(`http://localhost:5001/api`)
+    axios.get("https://image-uploader-react.onrender.com/api")
     .then(res => {
       const imagess = res.data;
+      // console.log("hello");
+      // console.log(imagess);
       setImages(res.data);
     })
   }
+  // const fetchImg2=()=>{
+  //   axios.get("").then(res=>{
+  //     const imgrender=res.data;
+  //     console.log(imgrender);
+  //   })
+  // }
+  // useEffect(fetchImg2,[]);
   useEffect(fetchImage,[]);
   const handleClick=()=>{
     setImg(!img);
   }
   const handleDelete=async (id)=>{
     try {
-      const response = await axios.delete(`http://localhost:5001/api/${id}`, {
+      const response = await axios.delete(`https://image-uploader-react.onrender.com/api/${id}`, {
         data: { _id: id },
         headers: {
           'Content-Type': 'application/json',
